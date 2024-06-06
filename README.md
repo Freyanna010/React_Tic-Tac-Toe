@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+his project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
@@ -41,6 +41,7 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 
 ## Learn More
 
+
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
@@ -68,3 +69,101 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+   
+
+
+
+       <div>
+            {MOVIES.map((movie) => (
+                <Poster
+                    key={movie.id}
+                    name={movie.name}
+                    description={movie.description}
+                    author={movie.author}
+                    img={movie.img}
+                />
+            ))}
+        </div>
+
+
+
+         <div>
+        <h2>{props.name}</h2>
+        <img src={props.img} alt="props.name" />
+
+        {props.description && <h4>{props.description}</h4>}
+        {props.author && <Author name={props.author.name} />}
+      </div>
+
+
+      const Author = (props) => {
+  return (
+<div className="author">  <h5> Author  is {props.name}</h5> </div>
+  );
+};
+
+
+
+
+const [name, setName] = useState("");
+const [password, setPassword] = useState("");
+
+const onChangeName = (e) => {
+  setName(e.target.value);
+}
+const onChangePassword = (e) => {
+setPassword(e.target.value)
+}
+
+
+ <div>
+        <input type="text" onChange={onChangeName} />
+        <p>Ваше имя: {name}</p>
+        <input type="password" onChange={onChangePassword} />
+        <p>Ваш пароль: {password}</p>
+      </div>
+
+
+
+
+const [data, setData] = useState({name2:"", password2:""})
+const onChangeName2 = (e) => {
+  setData((currentData) => {
+    return { name2: e.target.value, password2:currentData.password2 };
+  });
+};
+const onChangePassword2 = (e) => {
+  setData( (currentData) => {
+    return { name2:currentData.name2, password2: e.target.value };
+  }
+);
+
+
+
+
+    <div className="count">
+        <button onClick={handlerCount}>+</button>
+        <Count count={count}/>        
+      </div>
+
+
+  const [count, setCount] = useState(0)
+const handlerCount = () => {
+  setCount (value => (++value))
+}
+
+
+ const [movies, setMovies] = useState(false)
+    
+useEffect(() => {
+ if(props.count > 10)   
+setMovies(true)
+},[props.count])
+
+  return (
+    <div>
+      <p className="count">MOVIES = {props.count}</p>
+      {movies && <p>You is Tarantino</p>}
+    </div>
+  );
+};
